@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro.Examples;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -10,17 +11,22 @@ public class Player : MovingObject
     public int wallDamage = 1;
     public float hppermed = 10;
     public float restartLevelDelay = 2f;
-
+    private bool NeedToSpawn;
     public Animator animator;
     private int score;
     private BoardManager boardScr;
     private Rigidbody2D rb;
     public CharacterScriptableObject characterData;
     public Vector2 moveDir;
+    private PlayerStats player;
+
     protected override void Start()
-    {
+    {   
+        player = GetComponent<PlayerStats>();
         animator = GetComponent<Animator>();
         score = GameManager.instance.playerScore;
+        NeedToSpawn = GameManager.instance.nts;
+
         boardScr = GetComponent<BoardManager>();
         base.Start();
         rb = GetComponent<Rigidbody2D>();
@@ -45,7 +51,7 @@ public class Player : MovingObject
         if (moveDir.x != 0 || moveDir.y != 0) animator.SetBool("Moving", true);
         else animator.SetBool("Moving", false);
         //Debug.Log($"{moveDir.x} {moveDir.y}");
-        rb.velocity = new Vector2(moveDir.x * characterData.MoveSpeed, moveDir.y * characterData.MoveSpeed);
+        rb.velocity = new Vector2(moveDir.x * player.CurrentMoveSpeed, moveDir.y * player.CurrentMoveSpeed);
     }
     protected override void AttemptMove<T>(int xDir, int yDir)
     {
@@ -60,11 +66,7 @@ public class Player : MovingObject
         //GameManager.instance.playersTurn = false;
 
     }
-    private void OnCollisionEnter2D(Collision2D col)
-    {
-        if (!col.collider.CompareTag("Weapon") && !col.collider.CompareTag("Enemy") && !col.collider.CompareTag("Bullet"))
-            rb.MovePosition(new Vector2(rb.position.x-moveDir.x*0.25f, rb.position.y-moveDir.y*0.25f));
-    }
+
     protected override void OnCantMove<T>(T component)
     {
         Wall hitWall = component as Wall;
@@ -76,7 +78,9 @@ public class Player : MovingObject
     {
         if (other.tag == "Door")
         {
-            
+            NeedToSpawn = false;
+            GameManager.instance.nts = false;
+
             Invoke("Restart", restartLevelDelay);
             enabled = false;
         }
@@ -93,6 +97,7 @@ public class Player : MovingObject
             other.gameObject.SetActive(false);
             bullet.TakeDamage(10);
         }
+
     }
 
     private void Restart()

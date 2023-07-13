@@ -13,7 +13,64 @@ public class PlayerStats : MonoBehaviour
     private float currentProjectileSpeed;
     private float currentMight;
     private Animator animator;
-    
+    #region CurrentStats
+    public float CurrentHealth
+    {
+        get { return currentHp; }
+        set
+        {
+            if (currentHp != value)
+            {
+                currentHp = value;
+            }
+        }
+    }
+    public float CurrentRecovery
+    {
+        get { return currentRecovery; }
+        set
+        {
+            if (currentRecovery != value)
+            {
+                currentRecovery = value;
+            }
+        }
+    }
+    public float CurrentMoveSpeed
+    {
+        get { return currentMoveSpeed; }
+        set
+        {
+            if (currentMoveSpeed != value)
+            {
+                currentMoveSpeed = value;
+            }
+        }
+    }
+    public float CurrentProjSpeed
+    {
+        get { return currentProjectileSpeed; }
+        set
+        {
+            if (currentProjectileSpeed != value)
+            {
+                currentProjectileSpeed = value;
+            }
+        }
+    }
+    public float CurrentMight
+    {
+        get { return currentMight; }
+        set
+        {
+            if (currentMight != value)
+            {
+                currentMight = value;
+            }
+        }
+    }
+    #endregion
+
     [Header("I-F")]
     public float invincDur;
     float invincTimer;
@@ -34,14 +91,14 @@ public class PlayerStats : MonoBehaviour
     public List<lvlRange> LvlRanges;
     private void Awake()
     {
-        characterData = CharacterSelector.GetData();
-        Debug.Log(characterData.MaxHealth);
+        //characterData = CharacterSelector.GetData();
+        //Debug.Log(characterData.MaxHealth);
 
-        currentHp = characterData.MaxHealth;
-        currentRecovery = characterData.Recovery;
-        currentMoveSpeed = characterData.MoveSpeed;
-        currentProjectileSpeed = characterData.ProjectileSpeed;
-        currentMight = characterData.Might;
+        CurrentHealth = characterData.MaxHealth;
+        CurrentRecovery = characterData.Recovery;
+        CurrentMoveSpeed = characterData.MoveSpeed;
+        CurrentProjSpeed = characterData.ProjectileSpeed;
+        CurrentMight = characterData.Might;
         animator = GetComponent<Animator>();
     }
     private void Start()
@@ -80,7 +137,7 @@ public class PlayerStats : MonoBehaviour
     }
     public void Heal(float amount)
     {
-        currentHp = currentHp+amount > characterData.MaxHealth ? characterData.MaxHealth : currentHp+amount;
+        CurrentHealth = CurrentHealth + amount > characterData.MaxHealth ? characterData.MaxHealth : CurrentHealth + amount;
     }
 
     public void TakeDamage(float dmg)
@@ -88,12 +145,12 @@ public class PlayerStats : MonoBehaviour
         if (!isInvinc)
         {
             animator.SetTrigger("playerTakingDMG");
-            currentHp -= dmg;
+            CurrentHealth -= dmg;
             invincTimer = invincDur;
             isInvinc = true;
         }
         //currentHp -= dmg;
-        if (currentHp <= 0)
+        if (CurrentHealth <= 0)
            Dead();
     }
 
@@ -101,7 +158,9 @@ public class PlayerStats : MonoBehaviour
     {
         Debug.Log("GAME_OVER");
         animator.SetTrigger("playerDead");
-        //new WaitForSeconds(1);
-        //GameManager.instance.GameO();
+        Time.timeScale = 0f;
+        //Time.unscaledTime
+
+        animator.ResetTrigger("playerDead");
     }
 }

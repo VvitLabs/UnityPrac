@@ -13,11 +13,12 @@ public class DropRateManager : MonoBehaviour
         public float dropRate;
 
     }
-
+    public bool NeedToSpawn;
     public List<Drops> drops;
 
     private void OnDestroy()
     {
+        NeedToSpawn = GameManager.instance.nts;
         float randomNum = Random.Range(0f, 100f);
         List<Drops> posDrops = new List<Drops>();
         foreach ( Drops rate in drops)
@@ -28,7 +29,7 @@ public class DropRateManager : MonoBehaviour
                 
             }
         }
-        if (posDrops.Count > 0)
+        if (posDrops.Count > 0  && NeedToSpawn)
         {
             Drops drops = posDrops[Random.Range(0, posDrops.Count)];
             Instantiate(drops.itemPrefab, transform.position, Quaternion.identity);

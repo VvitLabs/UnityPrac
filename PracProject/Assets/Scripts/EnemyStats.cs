@@ -32,7 +32,7 @@ public class EnemyStats : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D collision)
     {
-        Debug.Log($"{collision.collider.tag}");
+        //Debug.Log($"{collision.collider.tag}");
         if (collision.collider.tag == "Player")
         {
             PlayerStats pl = collision.collider.GetComponent<PlayerStats>();

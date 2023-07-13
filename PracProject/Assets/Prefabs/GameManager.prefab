@@ -50,10 +50,11 @@ MonoBehaviour:
   turnDelay: 0.05
   playerHp: 5
   playerScore: 0
+  nts: 0
   playersTurn: 1
+  pauseScreen: {fileID: 697642999296159209, guid: 0f32ff0fcd04af24193e9e10a8bb542f, type: 3}
   currentState: 0
   prevState: 0
-  pausescreen: {fileID: 6595628907182833814, guid: 1ae5e9822662f93479973dc846833c1b, type: 3}
 --- !u!114 &8015755382383865279
 MonoBehaviour:
   m_ObjectHideFlags: 0

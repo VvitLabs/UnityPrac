@@ -30,5 +30,15 @@ public class MeleeWeaponBeh : MonoBehaviour
             Wall wall = col.collider.GetComponent<Wall>();
             wall.DamageWall(currentDamage);
         }
+        else if (col.collider.CompareTag("Enemy"))
+        {
+            EnemyStats enemy = col.collider.GetComponent<EnemyStats>();
+            enemy.TakeDamage(GetCurrentDamage());
+        }
+    }
+
+    public float GetCurrentDamage()
+    {
+        return currentDamage *= FindObjectOfType<PlayerStats>().CurrentMight;
     }
 }
