@@ -34,6 +34,9 @@ public class PlayerStats : MonoBehaviour
     public List<lvlRange> LvlRanges;
     private void Awake()
     {
+        characterData = CharacterSelector.GetData();
+        Debug.Log(characterData.MaxHealth);
+
         currentHp = characterData.MaxHealth;
         currentRecovery = characterData.Recovery;
         currentMoveSpeed = characterData.MoveSpeed;

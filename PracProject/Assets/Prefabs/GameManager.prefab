@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1002185342217420239}
   - component: {fileID: 5237724437649912926}
   - component: {fileID: 8015755382383865279}
+  - component: {fileID: 3675916419003572758}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Weapon
@@ -50,6 +51,9 @@ MonoBehaviour:
   playerHp: 5
   playerScore: 0
   playersTurn: 1
+  currentState: 0
+  prevState: 0
+  pausescreen: {fileID: 6595628907182833814, guid: 1ae5e9822662f93479973dc846833c1b, type: 3}
 --- !u!114 &8015755382383865279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,3 +200,15 @@ MonoBehaviour:
   - {fileID: 2326920322534748249, guid: fe7fc62eb0df6de408809a295f89c0b8, type: 3}
   bossTiles:
   - {fileID: 6410312428995539418, guid: 6db78ad5632c40e45ac98dde2bfa15b2, type: 3}
+--- !u!114 &3675916419003572758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9055424557770060887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fb56ec39e862b840974b101a163e241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

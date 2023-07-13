@@ -28,12 +28,6 @@ public class EnemyMovement : MonoBehaviour
         Vector2 moveDir = new Vector2(horizontal, vertical).normalized;
         rb.velocity = new Vector2(moveDir.x* enemyData.MoveSpeed, moveDir.y*enemyData.MoveSpeed);
     }
-    void OnCollisionStay2D(Collision2D col)
-    {
-        //Debug.Log($"OnCollidionEnter2D {col.transform.position} {moveDir} {rb.position}");
-        //Debug.Log($"{col.collider.tag}");
-        if (!col.collider.CompareTag("Weapon") && !col.collider.CompareTag("Enemy") && !col.collider.CompareTag("Bullet"))
-            rb.MovePosition(new Vector2(rb.position.x - moveDir.x * 5, rb.position.y - moveDir.y * 5));
-    }
+   
 }
 

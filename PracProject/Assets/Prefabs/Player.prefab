@@ -282,7 +282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b92f6b45f4a10994fa8318c5f1da6496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterData: {fileID: 11400000, guid: 3606a21eccddbb746b4896ae350d8dd5, type: 2}
+  characterData: {fileID: 0}
   invincDur: 0.5
   exp: 0
   lvl: 1

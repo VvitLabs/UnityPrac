@@ -24,7 +24,9 @@ public class CharacterSelector : MonoBehaviour
     }
     public static CharacterScriptableObject GetData()
     {
+        //Debug.Log($"Got Data {instance.characterData.MaxHealth}");
         return instance.characterData;
+        
     }
 
     public void SelectCharacter(CharacterScriptableObject character)
