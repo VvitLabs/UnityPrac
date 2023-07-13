@@ -13,12 +13,15 @@ GameObject:
   - component: {fileID: 1043376755738890263}
   - component: {fileID: 836419641056651720}
   - component: {fileID: 1632875448191653248}
+  - component: {fileID: 276708025336111031}
+  - component: {fileID: -8116239411472314835}
+  - component: {fileID: -2788794248791186912}
   m_Layer: 3
-  m_Name: GreenMonster(Clone)
+  m_Name: GreenMonster
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5362131134806787162
 Transform:
@@ -33,7 +36,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7860524937498810004
 SpriteRenderer:
@@ -74,7 +77,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -850487485
-  m_SortingLayer: 3
+  m_SortingLayer: 5
   m_SortingOrder: 7
   m_Sprite: {fileID: 21300000, guid: 0c3a3ade04aa91a4c8df7d25c6c21569, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -161,9 +164,9 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6411871193605562111}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -179,4 +182,53 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 2
+  m_Constraints: 0
+--- !u!114 &276708025336111031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6411871193605562111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766233be12f5fee4199cfdf2a5ed2f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyData: {fileID: 11400000, guid: fdd39ff7ac3fb4042b254978648eddc5, type: 2}
+--- !u!114 &-8116239411472314835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6411871193605562111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53d70b7871c750744b1a7c942a12b55e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyData: {fileID: 11400000, guid: fdd39ff7ac3fb4042b254978648eddc5, type: 2}
+  currentMoveSpeed: 0
+  currentHealth: 0
+  currentDamage: 0
+  currentFlying: 0
+--- !u!114 &-2788794248791186912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6411871193605562111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53ab347dfd395c74eb1e618642462071, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drops:
+  - name: RedGem
+    itemPrefab: {fileID: 2744859865095855291, guid: 4d4f21bbe7e58d044ba5775639118dcb, type: 3}
+    dropRate: 20
+  - name: GreenGem
+    itemPrefab: {fileID: 8949877759689766700, guid: 4e9cc7e17bcdd4545bcac222ca400548, type: 3}
+    dropRate: 40

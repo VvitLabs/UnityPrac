@@ -7,6 +7,10 @@ TagManager:
   - Health
   - Enemy
   - Item
+  - Door
+  - Bullet
+  - Weapon
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -50,6 +54,15 @@ TagManager:
   - name: Items
     uniqueID: 1348582911
     locked: 0
+  - name: Wall
+    uniqueID: 2000208197
+    locked: 0
+  - name: Doors
+    uniqueID: 205189145
+    locked: 0
   - name: Units
     uniqueID: 3444479811
+    locked: 0
+  - name: Player
+    uniqueID: 1367524195
     locked: 0
